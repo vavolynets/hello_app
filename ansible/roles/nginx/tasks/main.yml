@@ -1,5 +1,9 @@
 - name: Install nginx
-  apt: pkg=nginx state=latest
+  apt: pkg=nginx state=latest force=yes
+  tags: [nginx]
+
+- name: Install nginx-extras
+  apt: pkg=nginx-extras state=latest force=yes
   tags: [nginx]
 
 - name: Remove the app's config, if exists
@@ -15,6 +19,6 @@
   tags: [nginx]
 
 
-- name: Remove the app's symlink, if exists
-  command: rm -rf /etc/nginx/sites-enabled/{{app_name}}
-  tags: [nginx]
+#- name: Remove the app's symlink, if exists
+#  command: rm -rf /etc/nginx/sites-enabled/{{app_name}}
+#  tags: [nginx]

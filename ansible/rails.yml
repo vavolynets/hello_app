@@ -6,3 +6,5 @@
     - vars/defaults.yml
   roles:
     - rails
+    - nginx
+    - passenger

@@ -1,0 +1,13 @@
+- name: Install passenger
+  apt_repository:
+    repo: deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main
+    update_cache: yes
+    state: present
+  tags: [passenger]
+
+- name: Debian Passenger is present
+  apt:
+    name: passenger
+    state: latest
+    force: yes
+  tags: [passenger]
