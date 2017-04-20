@@ -1,0 +1,10 @@
+- hosts: prod
+  remote_user: ubuntu
+  serial: 1
+  sudo: yes
+  vars_files:
+    - vars/defaults.yml
+  roles:
+    - user
+    - rails
+    - nginx

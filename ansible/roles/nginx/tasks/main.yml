@@ -1,0 +1,20 @@
+- name: Install nginx
+  apt: pkg=nginx state=latest
+  tags: [nginx]
+
+- name: Remove the app's config, if exists
+  ##command: rm -rf /etc/nginx/sites-enabled/default
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  tags: [nginx]
+
+- name: Backup the default app
+  command: mv /etc/nginx/sites-available/default \
+           /etc/nginx/sites-available/default~
+  tags: [nginx]
+
+
+- name: Remove the app's symlink, if exists
+  command: rm -rf /etc/nginx/sites-enabled/{{app_name}}
+  tags: [nginx]

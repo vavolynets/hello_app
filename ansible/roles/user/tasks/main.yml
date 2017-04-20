@@ -1,0 +1,7 @@
+- name: "Create deployment user"
+  user:
+    name: rails
+    comment: "User for deployment rails app."
+    home: /opt/rails
+    system: yes
+  tags: [user]

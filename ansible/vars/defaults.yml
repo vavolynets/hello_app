@@ -1,0 +1,13 @@
+## webapp
+
+webserver_name: spree.ryanbigg.com
+deploy_directory: /data/spree
+app_name: empty
+
+## stolen from https://github.com/jgrowl/ansible-playbook-ruby-from-src
+rubyTmpDir: /usr/local/src
+rversion: 2.4.1
+rubyUrl: http://ftp.ruby-lang.org/pub/ruby/2.4/ruby-{{ rversion }}.tar.gz
+rubyCompressedFile: ruby-{{ rversion }}.tar.gz
+rubyName: ruby-{{ rversion }}
+tmpRubyPath: "{{rubyTmpDir}}/{{rubyName}}"
