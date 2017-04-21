@@ -5,6 +5,13 @@
     state: present
   tags: [passenger]
 
+- name: Debian Nginx-extras is present
+  apt:
+    name: nginx-extras
+    state: latest
+    force: yes
+  tags: [passenger]
+
 - name: Debian Passenger is present
   apt:
     name: passenger
