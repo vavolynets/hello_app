@@ -50,7 +50,7 @@ end
 
 group :production do
 
-#  gem 'listen', '~> 3.0.5'
+  gem 'listen', '~> 3.0.5'
 
   gem 'capistrano-passenger', '~> 0.2.0'
 
