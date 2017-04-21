@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   def empty
     uip = request.remote_ip
     uap = request.user_agent
-    render html: "Hello,\nyour IP: [#{uip}]\nyour UA: (#{uap})\n"
+    render html: "Hello,\n\ryour IP: [#{uip}]\n\ryour UA: (#{uap})\n\r"
   end
 end
