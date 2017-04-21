@@ -8,4 +8,4 @@
     - user
     - rails
 #    - nginx
-#    - passenger
+    - passenger
