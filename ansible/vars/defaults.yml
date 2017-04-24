@@ -2,7 +2,7 @@
 
 webserver_name: spree.ryanbigg.com
 deploy_directory: /home/rails
-app_name: empty
+app_name: hello_app
 
 ## stolen from https://github.com/jgrowl/ansible-playbook-ruby-from-src
 rubyTmpDir: /usr/local/src
