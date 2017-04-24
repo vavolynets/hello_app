@@ -18,3 +18,58 @@
     state: latest
     force: yes
   tags: [passenger]
+
+- name: Directories are present
+  file:
+    dest: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+  with_items: "{{ directories }}"
+  tags: [passenger]
+
+- name: Create symlink to the newest ruby 
+  file:
+    src: /usr/local/bin/ruby
+    dest: /usr/bin/ruby
+    state: link
+    force: yes
+  tags: [passenger]
+
+- name: Remove the default nginx config, if exists
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+    force: yes
+  tags: [passenger]
+
+- name: Remove the {{ app_name }} nginx config, if exists
+  file:
+    path: /etc/nginx/conf.d/{{ app_name }}.conf
+    state: absent
+    force: yes
+  tags: [passenger]
+
+- name: Files are present
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items: "{{ files }}"
+  backup: yes
+  register: copy_result
+  tags: [passenger]
+
+- name: Application's config is present
+  template:
+    src: app_conf.j2
+    dest: /etc/nginx/conf.d/{{ app_name }}.conf
+    force: no
+  register: conf_result
+  tags: [passenger]
+
+- name: Nginx service is restarted
+  service:
+    name: nginx
+    state: restarted
+  when: copy_result|changed or conf_result|changed
+  tags: [passenger]
