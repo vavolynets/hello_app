@@ -54,8 +54,8 @@
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
+    backup: yes
   with_items: "{{ files }}"
-  backup: yes
   register: copy_result
   tags: [passenger]
 
