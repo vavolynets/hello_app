@@ -4,6 +4,6 @@ directories:
   - /etc/nginx/sites-enabled
 
 files: [
-  {src: 'etc_nginx_nginx.conf', dest: '/data/nginx/nginx.conf'},
+  {src: 'etc_nginx_nginx.conf', dest: '/etc/nginx/nginx.conf'},
   {src: 'etc_nginx_passenger.conf', dest: '/etc/nginx/passenger.conf'}
 ]
