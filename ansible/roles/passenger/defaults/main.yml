@@ -1,0 +1,9 @@
+directories:
+  - /etc/nginx/conf.d
+  - /etc/nginx/sites-available
+  - /etc/nginx/sites-enabled
+
+files: [
+  {src: 'etc_nginx_nginx.conf', dest: '/data/nginx/nginx.conf'}
+  {src: 'etc_nginx_passenger.conf', dest: '/etc/nginx/passenger.conf'}
+]
