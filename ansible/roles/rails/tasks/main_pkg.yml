@@ -1,0 +1,49 @@
+---
+- name: Install aptitude
+  apt:
+    name: aptitude
+    force: yes
+    state: present
+  tags: [rails]
+
+- name: upgrade
+  action: apt update_cache=yes upgrade=yes
+
+- name: Get Kernel Release
+  shell: uname -r
+  ignore_errors: yes
+  register: uname_result
+  tags: [rails]
+
+- name: install ruby and its dependencies
+  action: apt pkg={{item}} state=installed
+  with_items:
+    - linux-headers-{{ uname_result.stdout }}
+    - git-core
+    - curl
+    - zlib1g-dev
+    - build-essential
+    - libssl-dev
+    - libreadline-dev
+    - libyaml-dev
+    - libsqlite3-dev
+    - sqlite3
+    - libxml2-dev
+    - libxslt1-dev
+    - libcurl4-openssl-dev
+    - python-software-properties
+    - libffi-dev
+    - ruby
+    - ruby-dev
+  tags: [rails]
+
+- name: Install app dependencies
+  action: apt pkg={{item}} state=installed
+  with_items:
+    - nodejs
+  tags: [rails]
+
+# Install Rails
+- name: Install Rails
+  command: gem install rails
+  tags: [rails]

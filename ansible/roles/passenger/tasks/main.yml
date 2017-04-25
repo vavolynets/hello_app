@@ -28,13 +28,13 @@
   with_items: "{{ directories }}"
   tags: [passenger]
 
-- name: Create symlink to the newest ruby 
-  file:
-    src: /usr/local/bin/ruby
-    dest: /usr/bin/ruby
-    state: link
-    force: yes
-  tags: [passenger]
+#- name: Create symlink to the newest ruby 
+#  file:
+#    src: /usr/local/bin/ruby
+#    dest: /usr/bin/ruby
+#    state: link
+#    force: no
+#  tags: [passenger]
 
 - name: Remove the default nginx config, if exists
   file:

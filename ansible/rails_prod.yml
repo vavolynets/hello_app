@@ -7,5 +7,4 @@
   roles:
     - user
     - rails
-#    - nginx
     - passenger
